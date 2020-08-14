@@ -1,5 +1,5 @@
 import React from "react";
-import wrigley from './wrigley.jpg';  
+import wrigley from './images/wrigley.jpg';  
 
 function About() {
   return (

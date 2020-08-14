@@ -1,5 +1,5 @@
 import React from "react";
-import lagoon from './lagoon.jpg';  
+import lagoon from './images/lagoon.jpg';  
 
 
 function Home() {

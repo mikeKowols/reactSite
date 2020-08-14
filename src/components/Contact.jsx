@@ -1,5 +1,5 @@
 import React from "react";
-import lagoon from './images/lagoon.jpg'; 
+import lake from './images/lake.jpg'; 
 
 
 function Contact() {
@@ -8,7 +8,7 @@ function Contact() {
       <div className="container">
         <div className="row align-items-center my-5">
           <div className="col-lg-7">
-            <img className="responsiveImage" src={lagoon} alt={lagoon} />
+            <img className="responsiveImage" src={lake} alt={lake} />
           </div>
           <div className="col-lg-5">
             <h1 className="font-weight-light">Contact</h1>
