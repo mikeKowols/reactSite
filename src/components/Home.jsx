@@ -24,6 +24,12 @@ import fms_knowledgeBase from './images/fms_knowledgeBase.png';
 import fms_software from './images/fms_software.png';  
 import fms_videos from './images/fms_videos.png';
 
+
+/*Community Cafe*/
+import cc_contactUs from './images/cc_contactUs.png';
+import cc_home from './images/cc_home.png';
+
+
 function Home() {
   return (
     <div className="home">
@@ -35,11 +41,28 @@ function Home() {
           <div className="col-lg-5">
             
             <p>
-              I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and page with sample API call. 
+              I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and a page with a sample API call. 
             </p>
           </div>
         </div>
 		<div className="row align-items-center my-5">
+          <div className="col-lg-12">
+            <h3>Coopers Hawk - Community Cafe</h3>
+          </div>
+        </div>
+		
+		<div className="row align-items-center my-5">
+          <div className="col-lg-4">
+             <img className="responsiveImage" src={cc_home} alt={cc_home} />
+          </div>
+		  <div className="col-lg-4">
+             <img className="responsiveImage" src={cc_contactUs} alt={cc_contactUs} />
+          </div>
+		  <div className="col-lg-4">
+              
+          </div>
+        </div> 
+      <div className="row align-items-center my-5">
           <div className="col-lg-12">
             <h3>Tuthill - Fill-Rite: Fuel Management System</h3>
           </div>
