@@ -16,6 +16,13 @@ import SR_ProductDetailPage from './images/SR_ProductDetailPage.png';
 import SR_Cart from './images/SR_AllProducts.png'; 
 import SR_Checkout from './images/SR_Checkout.png';
 
+/*FMS*/
+import fms_contactUs from './images/fms_contactUs.png';
+import fms_home from './images/fms_home.png';
+import fms_hardware from './images/fms_hardware.png';  
+import fms_knowledgeBase from './images/fms_knowledgeBase.png';
+import fms_software from './images/fms_software.png';  
+import fms_videos from './images/fms_videos.png';
 
 function Home() {
   return (
@@ -28,10 +35,42 @@ function Home() {
           <div className="col-lg-5">
             
             <p>
-              I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. 
+              I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and page with sample API call. 
             </p>
           </div>
         </div>
+		<div className="row align-items-center my-5">
+          <div className="col-lg-12">
+            <h3>Tuthill - Fill-Rite: Fuel Management System</h3>
+          </div>
+        </div>
+		
+		<div className="row align-items-center my-5">
+          <div className="col-lg-4">
+             <img className="responsiveImage" src={fms_home} alt={fms_home} />
+          </div>
+		  <div className="col-lg-4">
+             <img className="responsiveImage" src={fms_hardware} alt={fms_hardware} />
+          </div>
+		  <div className="col-lg-4">
+             <img className="responsiveImage" src={fms_software} alt={fms_software} />
+          </div>
+        </div> 
+       
+	  <div className="row align-items-center my-5">
+          <div className="col-lg-4">
+             <img className="responsiveImage" src={fms_knowledgeBase} alt={fms_knowledgeBase} />
+          </div>
+		  <div className="col-lg-4">
+             <img className="responsiveImage" src={fms_videos} alt={fms_videos} />
+          </div>
+		  <div className="col-lg-4">
+              <img className="responsiveImage" src={fms_contactUs} alt={fms_contactUs} />
+          </div>
+        </div> 
+		
+		
+		
 		<div className="row align-items-center my-5">
           <div className="col-lg-12">
             <h3>Gold Eagle - Sample Room</h3>
