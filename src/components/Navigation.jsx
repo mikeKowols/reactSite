@@ -59,13 +59,14 @@ function Navigation(props) {
                   Contact
                 </Link>
               </li>
+			   
 			  <li
                 className={`nav-item  ${
-                  props.location.pathname === "/APICall" ? "active" : ""
+                  props.location.pathname === "/TeamSearch" ? "active" : ""
                 }`}
               >
-                <Link className="nav-link" to="/APICall">
-                  API Call
+                <Link className="nav-link" to="/TeamSearch">
+                  Team Search
                 </Link>
               </li>
             </ul>

@@ -45,6 +45,8 @@ function Home() {
             </p>
           </div>
         </div>
+		
+		<h2>Work from past roles</h2>
 		<div className="row align-items-center my-5">
           <div className="col-lg-12">
             <h3>Coopers Hawk - Community Cafe</h3>

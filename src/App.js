@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, About, Contact, Resume, APICall } from "./components";
+import { Navigation, Footer, Home, About, Contact, Resume, APICall, TeamSearch } from "./components";
 function App() {
   return (
     <div className="App">
@@ -12,8 +12,9 @@ function App() {
           <Route path="/contact" exact component={() => <Contact />} />
 		  <Route path="/APICall" exact component={() => <APICall />} />
 		  <Route path="/resume" exact component={() => <Resume />} />
+		  <Route path="/TeamSearch" exact component={() => <TeamSearch />} />
         </Switch>
-       
+        
       </Router>
     </div>
   );

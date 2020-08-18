@@ -1,6 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
- 
+import React from 'react'; 
 
 class APICall extends React.Component {
   constructor(props) {
@@ -46,10 +44,11 @@ class APICall extends React.Component {
 		  <div className="row">
 			<div className="col-md-12">
 				The data below is pulled in from thesportsdb.com API. Eventually I would like to have a search box but for now I have a hard coded search value. 
+				 
 			</div>
 		  </div>
           {items.map(item => (
-		  <div>
+		  <div key="INFORMATION">
             <div className="row">
 				<div className="col-md-9">
 				<h1 key={item.strTeam}>
