@@ -1,7 +1,5 @@
 import React from 'react'; 
-
-
-
+ 
 
 
 class TeamSearch extends React.Component {
@@ -81,16 +79,21 @@ class TeamSearch extends React.Component {
 				<form onSubmit={this.handleSubmit}>
         <label>
           Pick your team:
+		</label>
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="Chicago%20Cubs">Chicago Cubs</option>
             <option value="Chicago%20Bears">Chicago Bears</option>
 			<option value="Chicago%20Blackhawks">Chicago Blackhawks</option>
 			<option value="Chicago%20Bulls">Chicago Bulls</option>
-			<option value="Chicago%20White%20Sox">Chicago White Sox</option>
-             
+			<option value="Chicago%20Cubs">Chicago Cubs</option>
+            <option value="Chicago%20White%20Sox">Chicago White Sox</option>
+			<option value="Detroit%20Red%20Wings">Detroit Red Wings</option>
+			<option value="Green%20Bay%20Packers">Green Bay Packers</option>
+			<option value="Minnesota%20Twins">Minnesota Twins</option>
+			<option value="New%20York%20Knicks">New York Knicks</option>
+			<option value="St.%20Louis%20Cardinals">St. Louis Cardinals</option>             
           </select>
-        </label>
-        <input type="submit" value="Submit" />
+        
+        <input className="btn btn-primary" type="submit" value="Submit" />
       </form> 
 				 
 			</div>
@@ -111,11 +114,16 @@ class TeamSearch extends React.Component {
         <label> 
           Pick your team to learn more: 
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="Chicago%20Cubs">Chicago Cubs</option>
             <option value="Chicago%20Bears">Chicago Bears</option>
 			<option value="Chicago%20Blackhawks">Chicago Blackhawks</option>
 			<option value="Chicago%20Bulls">Chicago Bulls</option>
-			<option value="Chicago%20White%20Sox">Chicago White Sox</option>
+			<option value="Chicago%20Cubs">Chicago Cubs</option>
+            <option value="Chicago%20White%20Sox">Chicago White Sox</option>
+			<option value="Detroit%20Red%20Wings">Detroit Red Wings</option>
+			<option value="Green%20Bay%20Packers">Green Bay Packers</option>
+			<option value="St.%20Louis%20Cardinals">St. Louis Cardinals</option>
+			<option value="Minnesota%20Twins">Minnesota Twins</option>
+			<option value="New%20York%20Knicks">New York Knicks</option>
              
           </select>
         </label>

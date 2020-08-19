@@ -14,7 +14,7 @@ function App() {
 		  <Route path="/resume" exact component={() => <Resume />} />
 		  <Route path="/TeamSearch" exact component={() => <TeamSearch />} />
         </Switch>
-        
+        <Footer />
       </Router>
     </div>
   );
