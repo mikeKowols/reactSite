@@ -1,11 +1,28 @@
 import React from 'react'; 
+import styled from 'styled-components'; 
+
+const Button = styled.button`
+  cursor: pointer;
+  border: 1px solid #1a202c;
+  padding: 8px;
+  min-width: 64px;
  
+  background: transparent;
+ 
+  transition: all 0.1s ease-in;
+ 
+  &:hover {
+    background: #1a202c;
+    color: #ffffff;
+  }
+`;
+
 
 
 class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'Chicago%20Cubs'};
+    this.state = {value: 'Chicago Cubs'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,7 +74,7 @@ class TeamSearch extends React.Component {
         (error) => {
           this.setState({
             isLoaded: true,
-            error
+            error: true
           });
         }
       )
@@ -70,8 +87,16 @@ class TeamSearch extends React.Component {
     const { error, isLoaded, items } = this.state;
 	 
 	
-    if (error) {
-      return <div>Error: {error.message}</div>;
+    if (items == null) {
+      return <div className="container">No Results returned. Please try searching again.<br/><br/><form onSubmit={this.handleSubmit}>
+        <label> 
+          Pick your team to learn more: 
+		  <input type="text" value={this.state.value} onChange={this.handleChange}/>
+         
+        </label>
+        <input style={{marginLeft: '20px'}} type="submit" value="Submit"  />
+		  
+      </form> </div>;
     } else if (!isLoaded) {
       return   <div className="container">
 		<div className="row">
@@ -86,7 +111,7 @@ class TeamSearch extends React.Component {
         <div className="container">
 		  <div className="row">
 			<div className="col-md-12">
-				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. The teams you can pick to read more about are some of my favorites to cheer for and against....<br/><br/>
+				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. Feel free to take a moment to read about your favorite team.<br/><br/>
 				 
 			</div>
 		  </div>
@@ -95,20 +120,11 @@ class TeamSearch extends React.Component {
 				<form onSubmit={this.handleSubmit}>
         <label> 
           Pick your team to learn more: 
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="Chicago%20Bears">Chicago Bears</option>
-			<option value="Chicago%20Blackhawks">Chicago Blackhawks</option>
-			<option value="Chicago%20Bulls">Chicago Bulls</option>
-			<option value="Chicago%20Cubs">Chicago Cubs</option>
-            <option value="Chicago%20White%20Sox">Chicago White Sox</option>
-			<option value="Detroit%20Red%20Wings">Detroit Red Wings</option>
-			<option value="Green%20Bay%20Packers">Green Bay Packers</option>
-			<option value="Minnesota%20Twins">Minnesota Twins</option>
-			<option value="New%20York%20Knicks">New York Knicks</option>
-			<option value="St.%20Louis%20Cardinals">St. Louis Cardinals</option>             
-          </select>
+		  <input type="text" value={this.state.value} onChange={this.handleChange}/>
+         
         </label>
-        <input type="submit" value="Submit" />
+        <input style={{marginLeft: '20px'}} type="submit" value="Submit"  />
+		  
       </form> 
 				 
 			</div>
