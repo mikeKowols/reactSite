@@ -4,15 +4,7 @@ function Resume() {
   return (
     <div className="resume">
       <div className="container">
-        <div className="row align-items-center my-5">
-          
-          <div className="col-lg-6">
-            <b>Phone:</b>  (847) 308-7356
-          </div>
-		  <div className="col-lg-6">
-            <b>Email:</b> mikekowols@gmail.com
-          </div>
-        </div>
+        
 		<div className="row align-items-center my-5">
           
           <div className="col-lg-12">
