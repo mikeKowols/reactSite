@@ -28,140 +28,297 @@ import fms_videos from './images/fms_videos.png';
 /*Community Cafe*/
 import cc_contactUs from './images/cc_contactUs.png';
 import cc_home from './images/cc_home.png';
+ 
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: 'th'};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  
+  componentDidMount() {
+    fetch("https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Chicago%20Cubs")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result.teams
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  handleSubmit(event) {
+     
+    event.preventDefault();
+	var role = this.state.value;
+	 
+	
+	 
+	
+  }
 
 
-function Home() {
-  return (
-    <div className="home">
-      <div className="container">
-        <div className="row align-items-center my-5">
-          <div className="col-lg-7">
-            <img className="responsiveImage" src={lagoon} alt={lagoon} />
-          </div>
-          <div className="col-lg-5">
-            
-            <p>
-              I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and a page with a sample API call. 
-            </p>
-          </div>
+	
+  render() {
+     var role = this.state.value;
+	 const userType = 2;
+	 
+      return (
+		
+		<div className="home">
+			<div className="container">
+				<div className="row align-items-center my-5">
+					<div className="col-lg-7">
+						<img className="responsiveImage" src={lagoon} alt={lagoon} />
+					</div>
+					<div className="col-lg-5">
+						<p>
+							I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and a page with a sample API call. 
+						</p>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-md-12">
+						<form onSubmit={this.handleSubmit}>
+						<label> 
+							Role: 
+						</label>	
+							<select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
+								<option value="cc">Cooper's Hawk: Community Cafe</option>
+								<option value="th">Tuthill Corporation: Fill-Rite, Fuel Management Systems</option>
+								<option value="ge">Gold Eagle: Sample Room</option>
+								<option value="se">Starling Eyewear</option>
+							</select>
+							 
+						</form> 
+					</div>
+				</div>
+				 
+				 
+				{(() => {
+					if (role == "cc") {
+					  return (
+						<CoopersHawk/>
+					  )
+					} else if (role == "ge") {
+					  return (
+						<GoldEagle/>
+					  )
+					} else if (role == "se") {
+					  return (
+						<StarlingEyewear/>
+					  )
+							
+					} else {
+					  return (
+						<Tuthill/>
+					  )
+					}
+				})()}
+				 		
+			</div>
         </div>
-		
-		<h2>Work from past roles</h2>
-		<div className="row align-items-center my-5">
-          <div className="col-lg-12">
-            <h3>Coopers Hawk - Community Cafe</h3>
-          </div>
-        </div>
-		
-		<div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={cc_home} alt={cc_home} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={cc_contactUs} alt={cc_contactUs} />
-          </div>
-		  <div className="col-lg-4">
-              
-          </div>
-        </div> 
-      <div className="row align-items-center my-5">
-          <div className="col-lg-12">
-            <h3>Tuthill - Fill-Rite: Fuel Management System</h3>
-          </div>
-        </div>
-		
-		<div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={fms_home} alt={fms_home} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={fms_hardware} alt={fms_hardware} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={fms_software} alt={fms_software} />
-          </div>
-        </div> 
-       
-	  <div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={fms_knowledgeBase} alt={fms_knowledgeBase} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={fms_videos} alt={fms_videos} />
-          </div>
-		  <div className="col-lg-4">
-              <img className="responsiveImage" src={fms_contactUs} alt={fms_contactUs} />
-          </div>
-        </div> 
-		
-		
-		
-		<div className="row align-items-center my-5">
-          <div className="col-lg-12">
-            <h3>Gold Eagle - Sample Room</h3>
-          </div>
-        </div>
-		
-		<div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={SR_Login} alt={SR_Login} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={SR_AllProducts} alt={SR_AllProducts} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={SR_ProductDetailPage} alt={SR_ProductDetailPage} />
-          </div>
-        </div> 
-       
-	  <div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={SR_Cart} alt={SR_Cart} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={SR_Checkout} alt={SR_Checkout} />
-          </div>
-		  <div className="col-lg-4">
-             &nbsp;
-          </div>
-        </div> 
-		
-		
-		<div className="row align-items-center my-5">
-          <div className="col-lg-12">
-            <h3>Starling Eyewear</h3>
-          </div>
-        </div>
-       
-	  <div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={star_home} alt={star_home} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={star_cat} alt={star_cat} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={star_prod} alt={star_prod} />
-          </div>
-        </div> 
-       
-	  <div className="row align-items-center my-5">
-          <div className="col-lg-4">
-             <img className="responsiveImage" src={star_home_mobile} alt={star_home_mobile} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={star_cat_mobile} alt={star_cat_mobile} />
-          </div>
-		  <div className="col-lg-4">
-             <img className="responsiveImage" src={star_prod_mobile} alt={star_prod_mobile} />
-          </div>
-        </div> 
-      </div>
-	  
-    </div>
-  );
+      );
+	 
+     
+  }
+}
+ 
+
+
+class CoopersHawk extends React.Component {
+	
+	
+	render() {
+     
+      return (
+		<div id="cc" >
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-12">
+				<h3>Coopers Hawk - Community Cafe</h3>
+			  </div>
+			</div>
+			
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={cc_home} alt={cc_home} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={cc_contactUs} alt={cc_contactUs} />
+			  </div>
+			  <div className="col-lg-4">
+				  
+			  </div>
+			</div>
+		</div>
+         
+		   
+      );
+	
+	}
 }
 
+class GoldEagle extends React.Component {
+	
+	
+	render() {
+     
+      return (
+		<div id="ge">
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-12">
+				<h3>Gold Eagle - Sample Room</h3>
+			  </div>
+			</div>
+			
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={SR_Login} alt={SR_Login} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={SR_AllProducts} alt={SR_AllProducts} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={SR_ProductDetailPage} alt={SR_ProductDetailPage} />
+			  </div>
+			</div> 
+		   
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={SR_Cart} alt={SR_Cart} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={SR_Checkout} alt={SR_Checkout} />
+			  </div>
+			  <div className="col-lg-4">
+				 &nbsp;
+			  </div>
+			</div>
+		</div>
+         
+		   
+      );
+	
+	}
+}
+
+class StarlingEyewear extends React.Component {
+	
+	
+	render() {
+     
+      return (
+		<div id="se">
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-12">
+				<h3>Starling Eyewear</h3>
+			  </div>
+			</div>
+		   
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_home} alt={star_home} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_cat} alt={star_cat} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_prod} alt={star_prod} />
+			  </div>
+			</div> 
+		   
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_home_mobile} alt={star_home_mobile} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_cat_mobile} alt={star_cat_mobile} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={star_prod_mobile} alt={star_prod_mobile} />
+			  </div>
+			</div>
+		</div>
+         
+		   
+      );
+	
+	}
+}
+
+
+class Tuthill extends React.Component {
+	
+	
+	render() {
+     
+      return (
+		<div id="th">
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-12">
+				<h3>Tuthill - Fill-Rite: Fuel Management System</h3>
+			  </div>
+			</div>
+			
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={fms_home} alt={fms_home} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={fms_hardware} alt={fms_hardware} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={fms_software} alt={fms_software} />
+			  </div>
+			</div> 
+			<div className="row align-items-center my-5">
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={fms_knowledgeBase} alt={fms_knowledgeBase} />
+			  </div>
+			  <div className="col-lg-4">
+				 <img className="responsiveImage" src={fms_videos} alt={fms_videos} />
+			  </div>
+			  <div className="col-lg-4">
+				  <img className="responsiveImage" src={fms_contactUs} alt={fms_contactUs} />
+			  </div>
+			</div> 
+		</div>
+         
+		   
+      );
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+ 
+ 
 
 
 export default Home;
