@@ -68,18 +68,13 @@ class Home extends React.Component {
   handleSubmit(event) {
      
     event.preventDefault();
-	var role = this.state.value;
 	 
-	
-	 
-	
   }
 
 
 	
   render() {
      var role = this.state.value;
-	 const userType = 2;
 	 
       return (
 		
@@ -99,7 +94,7 @@ class Home extends React.Component {
 					<div className="col-md-12">
 						<form onSubmit={this.handleSubmit}>
 						<label> 
-							Role: 
+							Select site from list to see screenshots: 
 						</label>	
 							<select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
 								<option value="cc">Cooper's Hawk: Community Cafe</option>
@@ -114,15 +109,15 @@ class Home extends React.Component {
 				 
 				 
 				{(() => {
-					if (role == "cc") {
+					if (role === "cc") {
 					  return (
 						<CoopersHawk/>
 					  )
-					} else if (role == "ge") {
+					} else if (role ==="ge") {
 					  return (
 						<GoldEagle/>
 					  )
-					} else if (role == "se") {
+					} else if (role === "se") {
 					  return (
 						<StarlingEyewear/>
 					  )

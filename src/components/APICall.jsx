@@ -59,7 +59,7 @@ class APICall extends React.Component {
 				</p> 
 				<h3>{item.strStadium}</h3>
 				<p>
-					<img key={item.strStadiumThumb} className="responsiveImage" src={item.strStadiumThumb}></img>
+					<img alt={item.strStadiumThumb} key={item.strStadiumThumb} className="responsiveImage" src={item.strStadiumThumb}></img>
 				</p>
 				<p key={item.strStadiumDescription}>{item.strStadiumDescription}</p>
 				<h3>Team Information</h3>
@@ -69,13 +69,13 @@ class APICall extends React.Component {
 			
 			<div className="row">
 				<div className="col-md-3"> 
-					<img key={item.strTeamBadge} className="responsiveImage" src={item.strTeamBadge}></img>
+					<img key={item.strTeamBadge}  alt={item.strTeamBadge}className="responsiveImage" src={item.strTeamBadge}></img>
 				</div>
 				<div className="col-md-3"> 
-					<img key={item.strTeamJersey} className="responsiveImage" src={item.strTeamJersey}></img>
+					<img key={item.strTeamJersey} alt={item.strTeamJersey} className="responsiveImage" src={item.strTeamJersey}></img>
 				</div>
 				<div className="col-md-3"> 
-						<img key={item.strTeamLogo} className="responsiveImage" src={item.strTeamLogo}></img>
+						<img key={item.strTeamLogo} alt={item.strTeamLogo} className="responsiveImage" src={item.strTeamLogo}></img>
 				</div>
 			</div>
 			</div>
