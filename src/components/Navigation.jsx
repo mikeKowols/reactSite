@@ -60,6 +60,15 @@ function Navigation(props) {
                   Team Search
                 </Link>
               </li>
+			  <li
+                className={`nav-item  ${
+                  props.location.pathname === "/NewsFeed" ? "active" : ""
+                }`}
+              >
+                <Link className="nav-link" to="/NewsFeed">
+                  News Feed
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
