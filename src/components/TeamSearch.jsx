@@ -252,7 +252,7 @@ class TeamSearch extends React.Component {
 								</div>
 							</div>
 							{futGames.map(futGame => (
-								<div key="INFORMATION">
+								<div key={futGame.dateEventLocal}>
 									<div className="row">
 										<div className="col-md-2">
 											{futGame.dateEventLocal}
@@ -298,7 +298,7 @@ class TeamSearch extends React.Component {
 								</div>
 							</div>
 							{prevGames.map(prevGame => (
-								<div key="INFORMATION">
+								<div key={prevGame.dateEventLocal}>
 									<div className="row">
 										<div className="col-md-2">
 											{prevGame.dateEventLocal}

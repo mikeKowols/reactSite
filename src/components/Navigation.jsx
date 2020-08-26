@@ -5,24 +5,13 @@ function Navigation(props) {
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Mike Kowols
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="navbar-nav ml-auto">
-              <li
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Mike Kowols</a>
+    </div>
+    <ul class="nav navbar-nav">
+       
+      <li
                 className={`nav-item  ${
                   props.location.pathname === "/" ? "active" : ""
                 }`}
@@ -60,12 +49,11 @@ function Navigation(props) {
                   Team Search
                 </Link>
               </li>
-			
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+			  
+    </ul>
+  </div>
+</nav>
+</div>
   );
 }
 
