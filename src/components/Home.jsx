@@ -65,7 +65,7 @@ class Home extends React.Component {
 					</div>
 					<div className="col-lg-5">
 						<p>
-							I have been seeing a lot of requests for developers who know how to use React. I got tired of saying that I don't have experience, so I'm taking this opportunity to learn. I'll probably  also talk about running and baseball a bit here. Below are screenshots of other projects I've done for work in the past. You will also notice on the navigation bar that there are links for my resume, a contact us page, and a page with a sample API call. 
+							I had wanted to dive into React for awhile and decided that the best way to do it would be to come up with a project. I had built a portfolio site a few years back using mostly jQuery and decided that it made sense to try to rebuild it in React. Beyond showing screenshots of past projects, I'll be using this to try to do different things using React.
 						</p>
 					</div>
 				</div>
@@ -281,18 +281,6 @@ class Tuthill extends React.Component {
 	
 	}
 }
-
-
-
-
-
-
-
-
-
-
- 
- 
 
 
 export default Home;
