@@ -42,28 +42,7 @@ class Home extends React.Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-  
-  componentDidMount() {
-    fetch("https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Chicago%20Cubs")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.teams
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
+   
 
   handleSubmit(event) {
      
@@ -97,9 +76,9 @@ class Home extends React.Component {
 							Select site from list to see screenshots: 
 						</label>	
 							<select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-								<option value="cc">Cooper's Hawk: Community Cafe</option>
-								<option value="th">Tuthill Corporation: Fill-Rite, Fuel Management Systems</option>
-								<option value="ge">Gold Eagle: Sample Room</option>
+								<option value="cc">Community Cafe</option>
+								<option value="th">Fuel Management Systems</option>
+								<option value="ge">Sample Room</option>
 								<option value="se">Starling Eyewear</option>
 							</select>
 							 
