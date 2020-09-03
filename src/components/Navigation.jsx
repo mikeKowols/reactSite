@@ -46,7 +46,7 @@ function Navigation(props) {
                 }`}
               >
                 <Link className="nav-link" to="/TeamSearch">
-                  Team Search
+                  Sample API Call
                 </Link>
               </li>
 			  
