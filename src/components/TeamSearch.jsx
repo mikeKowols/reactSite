@@ -1,11 +1,23 @@
 import React from 'react'; 
- 
 
+
+
+const teamLookup = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=";
+const eventsNext = "https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=";
+const eventsLast = "https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=";
+const teamList = [
+  {id: 134938, name: 'Chicago Bears'},
+  {id: 134854, name: 'Chicago Blackhawks'},
+  {id: 134870, name: 'Chicago Bulls'},
+  {id: 135269, name: 'Chicago Cubs'},
+  {id: 135253, name: 'Chicago White Sox'} 
+];
+ 
 class TeamSearch extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {value: '135269'};
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -15,7 +27,9 @@ class TeamSearch extends React.Component {
   }
   
   componentDidMount() {
-    fetch("https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=135269")
+	var team = this.state.value;  
+	  
+    fetch(teamLookup+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -24,9 +38,6 @@ class TeamSearch extends React.Component {
             items: result.teams
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -35,7 +46,7 @@ class TeamSearch extends React.Component {
         }
       )
 	  
-	fetch("https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=135269")
+	fetch(eventsNext+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -44,9 +55,6 @@ class TeamSearch extends React.Component {
             futGames: result.events
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -55,7 +63,7 @@ class TeamSearch extends React.Component {
         }
       ) 
 
-	fetch("https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=135269")
+	fetch(eventsLast+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -64,10 +72,7 @@ class TeamSearch extends React.Component {
             prevGames: result.results
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
+         (error) => {
           this.setState({
             isLoaded: true,
             error
@@ -82,7 +87,7 @@ class TeamSearch extends React.Component {
     event.preventDefault();
 	var team = this.state.value;
 	
-	fetch("https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id="+team)
+	fetch(teamLookup+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -91,9 +96,6 @@ class TeamSearch extends React.Component {
             items: result.teams
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -102,7 +104,7 @@ class TeamSearch extends React.Component {
         }
       )
 	  
-	  fetch("https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id="+team)
+	  fetch(eventsNext+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -111,9 +113,6 @@ class TeamSearch extends React.Component {
             futGames: result.events
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -122,7 +121,7 @@ class TeamSearch extends React.Component {
         }
       ) 
 	  
-	  fetch("https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id="+team)
+	  fetch(eventsLast+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -131,9 +130,6 @@ class TeamSearch extends React.Component {
             prevGames: result.results
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -155,11 +151,11 @@ class TeamSearch extends React.Component {
         <label> 
           Pick your team to learn more: 
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-			<option value="134938">Chicago Bears</option>
-			<option value="134854">Chicago Blackhawks</option>
-			<option value="134870">Chicago Bulls</option>
-			<option value="135269">Chicago Cubs</option>
-			<option value="135253">Chicago White Sox</option>
+			 
+			{teamList.map((team) =>
+				<option key={team.id} value={team.id}>{team.name}</option>
+			)}
+			
 		</select>
          
         </label>
@@ -178,7 +174,8 @@ class TeamSearch extends React.Component {
       return (
 	  
         <div className="container">
-		  <div className="row">
+			 
+			<div className="row">
 			<div className="col-md-12">
 				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. Feel free to take a moment to read about your favorite team.<br/><br/>
 				 
@@ -190,11 +187,10 @@ class TeamSearch extends React.Component {
         <label> 
           Pick your team to learn more: 
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-			<option value="134938">Chicago Bears</option>
-			<option value="134854">Chicago Blackhawks</option>
-			<option value="134870">Chicago Bulls</option>
-			<option value="135269">Chicago Cubs</option>
-			<option value="135253">Chicago White Sox</option>
+			 
+			{teamList.map((team) =>
+				<option key={team.id} value={team.id}>{team.name}</option>
+			)}
 		</select>
          
         </label>
@@ -317,18 +313,12 @@ class TeamSearch extends React.Component {
 					  )		
 					}
 				})()}
-		  
-		  
-		 
-	 
-		  
         </div>
       );
     }
   }
 }
-
-
+ 
 
  
 

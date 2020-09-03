@@ -5,11 +5,11 @@ function Navigation(props) {
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Mike Kowols</a>
+  <div className="container">
+    <div className="navbar-header">
+      <a className="navbar-brand" href="/">Mike Kowols</a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul className="nav navbar-nav">
        
       <li
                 className={`nav-item  ${
