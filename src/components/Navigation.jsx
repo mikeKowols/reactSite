@@ -5,11 +5,11 @@ function Navigation(props) {
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div className="container">
-    <div className="navbar-header">
-      <a className="navbar-brand" href="/">Mike Kowols</a>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Mike Kowols</a>
     </div>
-    <ul className="nav navbar-nav">
+    <ul class="nav navbar-nav">
        
       <li
                 className={`nav-item  ${
@@ -21,14 +21,22 @@ function Navigation(props) {
                   <span className="sr-only">(current)</span>
                 </Link>
               </li>
-              
-			  <li
+               <li
                 className={`nav-item  ${
                   props.location.pathname === "/resume" ? "active" : ""
                 }`}
               >
                 <Link className="nav-link" to="/resume">
                   Resume
+                </Link>
+              </li>
+			  <li
+                className={`nav-item  ${
+                  props.location.pathname === "/SampleWork" ? "active" : ""
+                }`}
+              >
+                <Link className="nav-link" to="/SampleWork">
+                  Sample Work
                 </Link>
               </li>
                 

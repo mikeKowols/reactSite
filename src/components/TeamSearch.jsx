@@ -18,6 +18,7 @@ class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: '135269'};
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -153,7 +154,7 @@ class TeamSearch extends React.Component {
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
 			 
 			{teamList.map((team) =>
-				<option key={team.id} value={team.id}>{team.name}</option>
+				<option value={team.id}>{team.name}</option>
 			)}
 			
 		</select>
@@ -174,7 +175,6 @@ class TeamSearch extends React.Component {
       return (
 	  
         <div className="container">
-			 
 			<div className="row">
 			<div className="col-md-12">
 				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. Feel free to take a moment to read about your favorite team.<br/><br/>
@@ -189,7 +189,7 @@ class TeamSearch extends React.Component {
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
 			 
 			{teamList.map((team) =>
-				<option key={team.id} value={team.id}>{team.name}</option>
+				<option value={team.id}>{team.name}</option>
 			)}
 		</select>
          
@@ -313,12 +313,20 @@ class TeamSearch extends React.Component {
 					  )		
 					}
 				})()}
+		  
+		  
+		 
+	 
+		  
         </div>
       );
     }
   }
 }
- 
+
+
+
+
 
  
 

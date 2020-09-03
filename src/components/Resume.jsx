@@ -12,7 +12,9 @@ function Resume() {
           </div>
         </div>
 		<div className="row align-items-center my-5">
-        	<div className="col-lg-6">
+        	<div className="col-lg-9">
+			<h3>Major Accomplishments</h3>
+					Built a new internal ordering website at Gold Eagle. Also, at Gold Eagle I created batch processes to simplify the process of creating orders for potential new clients. Created a website for the corporate cafeteria at Cooper’s Hawk. Rebuilt Cooper’s Hawk new employee blog. Created a new product website for new product launch at Tuthill.<br/><br/> 
 				<h3>Technical Skills</h3>
 					<b>Languages:</b> CSS, HTML, JavaScript, jQuery, Angular, React, SQL, ASP, C#, Java, XML, ASP.net MVC, PHP, Perl<br/>
 					<b>Databases:</b> Oracle, Microsoft SQL Server, MySQL, Ingres<br/>
@@ -29,11 +31,11 @@ function Resume() {
 		
 		<div className="row align-items-center my-5">
         	<div className="col-lg-9">
-				 
+					 
 					<h5>eCommerce Web Developer - Tuthill  - October 2019 - June 2020</h5>
-					Used HTML, CSS, JQuery, and Coldfusion to make updates to Mura based web properties. Worked with the Marketing team on designs for Salesforce Pardot forms, landing pages, and marketing emails.  Set up a wordpress based site for product roll out. Worked on replacing intranet websites. Selected ecommerce and ipaas (Integration platform as a service)  partners as part of a committee.<br/><br/>  
+					Used HTML, CSS, JQuery, and Coldfusion to make updates to Mura based web properties. Worked with the Marketing team on designs for Salesforce Pardot forms, landing pages, and marketing emails.  Set up a wordpress based site for product roll out. This included setting up a linux box running Ubuntu on AWS, installing Apache 2, mySql, and PHP. Worked on replacing intranet website. Selected ecommerce and ipaas (Integration platform as a service)  partners as part of a committee.<br/><br/>  
 					<h5>Application Developer - Cooper’s Hawk -  April 2019 - October 2019</h5>
-					Used HTML, CSS, JQuery, and PHP to make updates to the X-Cart based ecommerce site. Worked on updating CRAFT CMS based site.  Set up site wordpress site for building cafeteria managed by company.Worked with financial team on solutions to ongoing reporting issues.<br/><br/> 
+					Used HTML, CSS, JQuery, and PHP to make updates to the X-Cart based ecommerce site. Worked on updating CRAFT CMS based site.  Set up a wordpress site for the buildings cafeteria managed by the company. This included setting up a linux box running CentOS on Azure, installing Apache 2, mySql, and PHP. Worked with the financial team on solutions to ongoing reporting issues.<br/><br/> 
 					<h5>e-Commerce Web Developer - Gold Eagle - August 2017 - January 2019</h5>
 					Used HTML, CSS (responsive), JQuery, and PHP to make updates to the website. Wrote web service calls using C#. Created tools for team members to use to pull reports on demand. Helped relaunch the company's external and internal WooCommerce websites. <br/><br/>  
 					<h5>Web Developer – National Cycle - May 2016 - June 2017</h5>
@@ -43,7 +45,7 @@ function Resume() {
 					<h5>Consultant – Compusystems  -  August  2015 - October 2015</h5>
 					Worked as a consultant on web sites comparable to those I worked on when I was a full time employee.<br/><br/> 
 					<h5>Web Programmer – Strategic Account Management Association  - March 2015 - May 2015</h5>
-					Responsible for making updates to the main company website using ASP.net and setting up event registration sites using 3rd party software, eTouches. Worked as onsite staff for the company's annual conference. <br/>
+					Responsible for making updates to the main company website using ASP.net and setting up event registration sites using 3rd party software, eTouches. Worked as onsite staff for the company's annual conference. <br/><br/>
 					<h5>Web Programmer – Compusystems  - April 2009 - February 2015</h5>
 					Used HTML, CSS, JavaScript and JQuery to create jsp pages for  trade show registration websites for external clients. Helped mentor newer web programmers as the team expanded. <br/><br/> 
 					<h5>Web Developer  - Stats LLC - October 2007 – March 2009</h5>
