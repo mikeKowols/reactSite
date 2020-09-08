@@ -67,6 +67,7 @@ class SampleWork extends React.Component {
   }
 
   handleChange(event) {
+	  
     this.setState({value: event.target.value});
   }
    
@@ -121,7 +122,8 @@ class SampleWork extends React.Component {
 								<option value="se">Starling Eyewear</option>
 							</select>
 							 
-						</form> 
+						</form>
+						<br/><br/>
 						<button type="button" onClick={() => this.setState({ isOpen: true })}>
           View Images Larger
         </button>
@@ -134,7 +136,7 @@ class SampleWork extends React.Component {
 					  return (
 						<Tuthill/>
 					  )
-					} else if (role ==="ch") {
+					} else if (role === "cc") {
 					  return (
 						<CoopersHawk/>
 					  )
