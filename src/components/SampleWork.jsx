@@ -1,4 +1,6 @@
 import React from "react";
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; 
 
 /*Starling Eyewear*/
 import star_cat from './images/starling_category.png';
@@ -27,15 +29,39 @@ import fms_videos from './images/fms_videos.png';
 /*Community Cafe*/
 import cc_contactUs from './images/cc_contactUs.png';
 import cc_home from './images/cc_home.png';
-    
+
+	const images = [
+		
+		
+		fms_home,
+		fms_hardware,
+		fms_software, 		
+		fms_knowledgeBase, 
+		fms_videos,
+		fms_contactUs, 
+		cc_home,
+		cc_contactUs, 
+		SR_Login,
+		SR_AllProducts,
+		SR_ProductDetailPage,
+		SR_Cart,
+		SR_Checkout,
+		star_cat,
+		star_home,
+		star_prod,
+		star_cat_mobile,
+		star_home_mobile, 
+		star_prod_mobile,
+		];
 
 class SampleWork extends React.Component {
   
   
   constructor(props) {
     super(props);
-    this.state = {value: 'th'};
-
+    this.state = {photoIndex: 0,
+      isOpen: false,value: 'th'};
+	 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -53,12 +79,33 @@ class SampleWork extends React.Component {
 
 		
 	render(){
-			
+	const { photoIndex, isOpen } = this.state;		
 			
   var role = this.state.value;
   return (
   
     <div className="about">
+		
+ 
+        {isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => this.setState({ isOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + images.length - 1) % images.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % images.length,
+              })
+            }
+          />
+        )}
+	
       <div className="container">
 		<h3>Sample Work</h3>
         <div className="row">
@@ -68,34 +115,37 @@ class SampleWork extends React.Component {
 							Select site from list to see screenshots: 
 						</label>	
 							<select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-								<option value="cc">Community Cafe</option>
 								<option value="th">Fuel Management Systems</option>
+								<option value="cc">Community Cafe</option>
 								<option value="ge">Sample Room</option>
 								<option value="se">Starling Eyewear</option>
 							</select>
 							 
 						</form> 
+						<button type="button" onClick={() => this.setState({ isOpen: true })}>
+          View Images Larger
+        </button>
 					</div>
 				</div>
 				 
 				 
 				{(() => {
-					if (role === "cc") {
+					if (role === "th") {
+					  return (
+						<Tuthill/>
+					  )
+					} else if (role ==="ch") {
 					  return (
 						<CoopersHawk/>
 					  )
-					} else if (role ==="ge") {
+					} else if (role === "ge") {
 					  return (
 						<GoldEagle/>
 					  )
+							
 					} else if (role === "se") {
 					  return (
 						<StarlingEyewear/>
-					  )
-							
-					} else {
-					  return (
-						<Tuthill/>
 					  )
 					}
 				})()}
@@ -188,7 +238,7 @@ class StarlingEyewear extends React.Component {
 	render() {
      
       return (
-		<div id="se">
+		<div id="se" >
 			<div className="row align-items-center my-5">
 			  <div className="col-lg-12">
 				<h3>Starling Eyewear</h3>
@@ -197,7 +247,7 @@ class StarlingEyewear extends React.Component {
 		   
 			<div className="row align-items-center my-5">
 			  <div className="col-lg-4">
-				 <img className="responsiveImage" src={star_home} alt={star_home} />
+				 <img className="responsiveImage" src={star_home} alt={star_home} onClick={() => this.setState({ isOpen: true })}/>
 			  </div>
 			  <div className="col-lg-4">
 				 <img className="responsiveImage" src={star_cat} alt={star_cat} />

@@ -12,6 +12,7 @@ const teamList = [
   {id: 135269, name: 'Chicago Cubs'},
   {id: 135253, name: 'Chicago White Sox'} 
 ];
+
  
 class TeamSearch extends React.Component {
 
@@ -25,6 +26,7 @@ class TeamSearch extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+	
   }
   
   componentDidMount() {
@@ -146,7 +148,7 @@ class TeamSearch extends React.Component {
 	
   render() {
     const {isLoaded, items, futGames, prevGames } = this.state;
- 
+	
     if (items == null) {
       return <div className="container">No Results returned. Please try searching again.<br/><br/><form onSubmit={this.handleSubmit}>
         <label> 
@@ -154,7 +156,7 @@ class TeamSearch extends React.Component {
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
 			 
 			{teamList.map((team) =>
-				<option value={team.id}>{team.name}</option>
+				<option key={team.id} value={team.id}>{team.name}</option>
 			)}
 			
 		</select>
@@ -175,6 +177,7 @@ class TeamSearch extends React.Component {
       return (
 	  
         <div className="container">
+		 
 			<div className="row">
 			<div className="col-md-12">
 				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. Feel free to take a moment to read about your favorite team.<br/><br/>
@@ -189,7 +192,7 @@ class TeamSearch extends React.Component {
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
 			 
 			{teamList.map((team) =>
-				<option value={team.id}>{team.name}</option>
+				<option key={team.id} value={team.id}>{team.name}</option>
 			)}
 		</select>
          
@@ -323,10 +326,7 @@ class TeamSearch extends React.Component {
     }
   }
 }
-
-
-
-
+ 
 
  
 
