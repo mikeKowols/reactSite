@@ -13,8 +13,13 @@ function Contact() {
           <div className="col-lg-5">
             <h1 className="font-weight-light">Contact</h1>
             <p>
-             
-            </p>
+				Mike Kowols<br/>
+				<a href="mailto:mikekowols@gmail.com?subject=">mikekowols@gmail.com</a><br/>
+				(847) 308-7356<br/>
+				<a target="blank" href="https://www.linkedin.com/in/mike-kowols-b604305/">LinkedIn</a><br/>
+				<a target="blank" href="https://github.com/mikeKowols/">GitHub</a><br/>
+				
+			</p>
           </div>
         </div>
       </div>
