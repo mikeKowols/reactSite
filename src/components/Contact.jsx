@@ -11,7 +11,7 @@ function Contact() {
             <img className="responsiveImage" src={lake} alt={lake} />
           </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">Contact</h1>
+            <h1>Contact</h1>
             <p>
 				Mike Kowols<br/>
 				<a href="mailto:mikekowols@gmail.com?subject=">mikekowols@gmail.com</a><br/>

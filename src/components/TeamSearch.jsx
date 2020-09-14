@@ -1,7 +1,6 @@
 import React from 'react'; 
 
 
-
 const teamLookup = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=";
 const eventsNext = "https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=";
 const eventsLast = "https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=";

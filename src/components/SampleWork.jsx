@@ -108,7 +108,7 @@ class SampleWork extends React.Component {
         )}
 	
       <div className="container">
-		<h3>Sample Work</h3>
+		<h1>Sample Work</h1>
         <div className="row">
 					<div className="col-md-12">
 						<form onSubmit={this.handleSubmit}>
