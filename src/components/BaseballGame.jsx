@@ -464,7 +464,7 @@ class TeamSearch extends React.Component {
 					<div>
 		  		<div className="row heading" >
 					<div id="inningText" style={teamScore}>
-						Inning: {" " + this.state.topBottom + " " + Math.round( this.state.inning/2 )}
+						{" " + this.state.topBottom + " " + Math.round( this.state.inning/2 )}
 					</div>
 					<div id="outText" style={teamScore}>
 						Out: {this.state.outs}
@@ -481,15 +481,13 @@ class TeamSearch extends React.Component {
 				<div className="row heading">
 					<div className="col-xs-12 item"></div>
 				</div>
-				<div className="row heading">
-					<div className="col-xs-12 item">{this.state.action}</div>
-				</div>
+				 
 				<div className="row heading">
 					<div className="col-xs-12">
 						<img alt="gameImage" style={{width:'95%'}}id="mainImage" src={this.state.image}/>
 					</div>
-					<div  className="col-sm-12">
-						{this.state.baseRunnersText} 
+					<div  className="col-sm-12" >
+						{this.state.action + " :: " + this.state.baseRunnersText} 
 					</div>
 				</div>
 				<div id="buttons" className="row heading" style={buttonRow}>

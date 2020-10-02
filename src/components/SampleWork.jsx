@@ -124,7 +124,7 @@ class SampleWork extends React.Component {
 							 
 						</form>
 						<br/><br/>
-						<button type="button" onClick={() => this.setState({ isOpen: true })}>
+						<button className="btn btn-info" type="button" onClick={() => this.setState({ isOpen: true })}>
           View Images Larger
         </button>
 					</div>
