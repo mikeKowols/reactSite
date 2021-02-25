@@ -1,9 +1,3 @@
-/*
-Not sure how to best implement the specials section.
-it seems like I would need to do a fetch 
-
-
-*/
 import React from 'react'; 
 
 
@@ -145,7 +139,7 @@ class APICall extends React.Component {
 				}
 			}
 		}
-
+  
       return (
 	  
         <div className="container">
