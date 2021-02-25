@@ -1,42 +1,37 @@
+/*
+Not sure how to best implement the specials section.
+it seems like I would need to do a fetch 
+
+
+*/
 import React from 'react'; 
 
 
-
-const teamLookup = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=";
-const eventsNext = "https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=";
-const eventsLast = "https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=";
-const teamList = [
-  {id: 134938, name: 'Chicago Bears'},
-  {id: 134854, name: 'Chicago Blackhawks'},
-  {id: 134870, name: 'Chicago Bulls'},
-  {id: 135269, name: 'Chicago Cubs'},
-  {id: 135253, name: 'Chicago White Sox'} 
-];
+const recipes = "http://localhost:3001/recipes";
+const specials = "http://localhost:3001/specials";
  
-class TeamSearch extends React.Component {
-
+class APICall extends React.Component {
+  
   constructor(props) {
     super(props);
-    this.state = {value: '135269'};
-
+    this.state = {value: 'e80ea521-4d42-48fe-a7a6-ac8952bc0de4'};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
+	
   }
   
   componentDidMount() {
-	var team = this.state.value;  
-	  
-    fetch(teamLookup+team)
+    fetch(recipes)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.teams
+            items: result
           });
         },
         (error) => {
@@ -45,73 +40,41 @@ class TeamSearch extends React.Component {
             error
           });
         }
-      )
+     )
 	  
-	fetch(eventsNext+team)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            futGames: result.events
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      ) 
-
-	fetch(eventsLast+team)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            prevGames: result.results
-          });
-        },
-         (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )  
-	  
-  }
+	
+ }
 
   handleSubmit(event) {
-     
+   
     event.preventDefault();
-	var team = this.state.value;
-	
-	fetch(teamLookup+team)
+	var dish = this.state.value;
+	fetch(recipes)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.teams
+            items: result
           });
         },
         (error) => {
           this.setState({
             isLoaded: true,
-            error: true
+            error
           });
         }
-      )
-	  
-	  fetch(eventsNext+team)
+    )
+	
+	fetch(recipes+"/"+dish)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            futGames: result.events
+            dishes: result,
+			ingredients: result.ingredients,
+			directions: result.directions
           });
         },
         (error) => {
@@ -122,13 +85,13 @@ class TeamSearch extends React.Component {
         }
       ) 
 	  
-	  fetch(eventsLast+team)
+	fetch(specials)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            prevGames: result.results
+            special: result,
           });
         },
         (error) => {
@@ -137,32 +100,17 @@ class TeamSearch extends React.Component {
             error
           });
         }
-      ) 
-	  
-	
+      )   
+ 
   }
 
 
 	
   render() {
-    const {isLoaded, items, futGames, prevGames } = this.state;
- 
-    if (items == null) {
-      return <div className="container">No Results returned. Please try searching again.<br/><br/><form onSubmit={this.handleSubmit}>
-        <label> 
-          Pick your team to learn more: 
-		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-			 
-			{teamList.map((team) =>
-				<option value={team.id}>{team.name}</option>
-			)}
-			
-		</select>
-         
-        </label>
-        <input style={{marginLeft: '20px'}} type="submit" value="Submit"  />
-		  
-      </form> </div>;
+    const {isLoaded, items, dishes, ingredients, directions, special} = this.state;
+     
+	if (items === undefined) {
+      return <div className="container">No Results returned. Please consult the IT Department<br/><br/> </div>;
     } else if (!isLoaded) {
       return   <div className="container">
 		<div className="row">
@@ -172,156 +120,138 @@ class TeamSearch extends React.Component {
 			</div>
 		  </div></div>;
     } else {
+
+		for(let i = 0; i < items.length; i++){
+			if(items[i] !== undefined){
+				if(items[i].title === undefined){
+					delete items[ i ];
+				}
+			}
+		}
+		
+		if (special !== undefined && ingredients !== undefined) {
+			for(let i = 0; i < ingredients.length; i++){
+				if(ingredients[i] !== undefined){
+					for(let j = 0; j < special.length; j++){
+						if(special[j] !== undefined){
+							if(special[j].ingredientId === ingredients[i].uuid){
+								ingredients[i].special_title = special[j].title;
+								ingredients[i].special_type  = special[j].type;
+								ingredients[i].special_text  = special[j].text;
+							}
+						}
+						
+					}
+				}
+			}
+		}
+
       return (
 	  
         <div className="container">
-		 
 			<div className="row">
-			<div className="col-md-12">
-				I know that one of the most important things these days is to be able to show ability to use an external API. This details on this page are being pulled in from the sportspagedb.com API. Feel free to take a moment to read about your favorite team.<br/><br/>
-				 
+				<div className="col-md-12">
+					<h1>Welcome to the Recipe Viewer!</h1>
+				</div>
 			</div>
-		  </div>
-		  <div className="row">
-			<div className="col-md-12">
-				<form onSubmit={this.handleSubmit}>
+			<div className="row">
+				<div className="col-md-12">
+					<form onSubmit={this.handleSubmit}>
         <label> 
-          Pick your team to learn more: 
+          Select your recipe: 
 		  <select style={{marginLeft: '10px'}} value={this.state.value} onChange={this.handleChange}>
-			 
-			{teamList.map((team) =>
-				<option value={team.id}>{team.name}</option>
-			)}
-		</select>
-         
-        </label>
-        <input style={{marginLeft: '20px'}} type="submit" value="Submit"  />
-		  
-      </form> 
-				 
-			</div>
-		  </div>
-		  
-          {items.map(item => (
-		  <div key="INFORMATION">
-            <div className="row">
-				<div className="col-md-9">
-				<h1 key={item.strTeam}>
-					{item.strTeam} 
-				</h1> 
-				<h3>{item.strStadium}</h3>
-				<p>
-					<img alt={item.strStadiumThumb} key={item.strStadiumThumb} className="responsiveImage" src={item.strStadiumThumb}></img>
-				</p>
-				<p key={item.strStadiumDescription}>{item.strStadiumDescription}</p>
-				<h3>Team Information</h3>
-				<p key={item.strDescriptionEN}>{item.strDescriptionEN}</p>
-			 </div>
-			</div>
-			 
-			</div>
-          ))}
-		  
-		  {(() => {
-					if (futGames == null) {
+				{items.map((item) =>
+					 <option key={item.uuid} value={item.uuid}>{item.title}</option> 
+				)}
+		 		</select>
+			   <input style={{marginLeft: '20px'}} type="submit" value="Submit"  />
+        </label></form>
+       		</div>
+				{(() => {
+					if (dishes === undefined) {
 					  return (
 						 <div>&nbsp;</div>
 					  )
 					 
 					}else{
 					  return (
-						 <div> 
-							<h1>
-								SCHEDULE (next 5)
-							</h1>
-							<div className="row">
-								<div className="col-md-2">
-									<b>Date</b>
-								</div>
-								<div className="col-md-2">
-									<b>Time</b>
-								</div>
-								<div className="col-md-2">
-									<b>Home Team</b>
-								</div>
-								<div className="col-md-2">
-									<b>Away Team</b>
-								</div>
+						
+						<div className="row">
+							<div className="col-md-6">
+								<img alt={dishes.title} src={"http://localhost:3001" + dishes.images.medium}/>
 							</div>
-							{futGames.map(futGame => (
-								<div key={futGame.dateEventLocal}>
-									<div className="row">
-										<div className="col-md-2">
-											{futGame.dateEventLocal}
-										</div>
-										<div className="col-md-2">
-											{futGame.strTimeLocal}
-										</div>
-										<div className="col-md-2">
-											{futGame.strHomeTeam}
-										</div>
-										<div className="col-md-2">
-											{futGame.strAwayTeam}
-										</div>
-										 
-									</div>
-								</div>
-							))}
+							<div className="col-md-6">
+								<h1>{dishes.title}</h1>
+								<h3>{dishes.description}</h3>
+								Servings: {dishes.servings}<br/>
+								Prep Time: {dishes.prepTime} minutes<br/>
+								Cook Time: {dishes.cookTime} minutes<br/><br/>
+								Ingredients:<br/>
+								<ul>
+								
+								{ingredients.map(ingredient => (
+								
+									<li key={ingredient.name}>
+										{ingredient.amount + " " + ingredient.measurement + " " + ingredient.name}
+										{(() => {
+											if (ingredient.special_title !== undefined) {
+												return (
+												<div><em>{ingredient.special_title}</em></div>
+												)
+											}
+										})()}
+										{(() => {
+											if (ingredient.special_text !== undefined) {
+												return (
+												<div><em>{ingredient.special_text}</em></div>
+												)
+											}
+										})()}
+										{(() => {
+											if (ingredient.text !== undefined) {
+												return (
+												<div><em>{ingredient.text}</em></div>
+												)
+											}
+										})()}
+									</li>
+								))}
+							 
+								</ul>
+								<br/> 
+								 
+								Directions:<br/>
+								<ol>
+								{directions.map(direction => (
+								  <li key={direction.instructions}>
+									  {direction.instructions + " "} 
+										{(() => {
+											if (direction.optional) {
+												return (
+												<em>(optional)</em>
+												)
+											}
+										})()}
+									</li>
+								))}
+								</ol>
+							</div>
+							
 						</div>
-					  )		
+					  )
 					}
 				})()}
 				
-				{(() => {
-					if (prevGames == null) {
-					  return (
-						 <div>&nbsp;</div>
-					  )
-					 
-					}else{
-					  return (
-						 <div style={{marginTop:'20px'}}> 
-							<h1>RESULTS (last 5)
-							</h1>
-							<div className="row">
-								<div className="col-md-2">
-									<b>Date</b>
-								</div>
-								<div className="col-md-3">
-									<b>Home Team</b>
-								</div>
-								<div className="col-md-3">
-									<b>Away Team</b>
-								</div>
-							</div>
-							{prevGames.map(prevGame => (
-								<div key={prevGame.dateEventLocal}>
-									<div className="row">
-										<div className="col-md-2">
-											{prevGame.dateEventLocal}
-										</div>
-										<div className="col-md-3">
-											{prevGame.strHomeTeam} (  {prevGame.intHomeScore} )
-										</div>
-										<div className="col-md-3">
-											{prevGame.strAwayTeam} ( {prevGame.intAwayScore} )
-										</div>
-										 
-									</div>
-								</div>
-							))}
-						</div>
-					  )		
-					}
-				})()}
-		  
-		  
+				
+				 
+			</div>
+		</div>  
 		 
-	 
-		  
-        </div>
+		
+		
       );
     }
+	
   }
 }
  
@@ -330,4 +260,4 @@ class TeamSearch extends React.Component {
 
 
 
-export default TeamSearch;
+export default APICall;

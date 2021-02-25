@@ -29,8 +29,21 @@ function Resume() {
 			</div>
         </div>
 		
+		
+		
+		
+
+
+		
+		
 		<div className="row align-items-center my-5">
         	<div className="col-lg-9">
+				<h5>Programmer - eTech360 - Northbrook, IL - November 2020 - February 2021</h5>
+					<ul>
+						<li>
+							Used HTML, CSS, PHP, and JQuery to make updates to CodeIgniter based project. Gained experience working in an agile environment with 2 week sprints. Worked on bug fixes and new functionality for tools used by internal employees to work with customers. 
+						</li>
+					</ul>
 				<h5>eCommerce Web Developer - Tuthill  - October 2019 - June 2020</h5>
 					<ul>
 						<li>
@@ -42,7 +55,8 @@ function Resume() {
 						<li>
 							Worked on replacing intranet website. Selected ecommerce and ipaas (Integration platform as a service)  partners as part of a committee.
 						</li>
-					</ul>  
+					</ul>
+					
 				<h5>Application Developer - Cooper’s Hawk -  April 2019 - October 2019</h5>
 					<ul>
 						<li>
