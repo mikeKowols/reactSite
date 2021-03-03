@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const teamLookup = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=";
-const eventsNext = "https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=";
 const eventsLast = "https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=";
 const teamList = [
   {id: 134938, name: 'Chicago Bears'},
@@ -48,23 +47,6 @@ class TeamSearch extends React.Component {
         }
       )
 	  
-	fetch(eventsNext+team)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            futGames: result.events
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      ) 
-
 	fetch(eventsLast+team)
       .then(res => res.json())
       .then(
@@ -106,24 +88,7 @@ class TeamSearch extends React.Component {
         }
       )
 	  
-	  fetch(eventsNext+team)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            futGames: result.events
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      ) 
-	  
-	  fetch(eventsLast+team)
+      fetch(eventsLast+team)
       .then(res => res.json())
       .then(
         (result) => {
@@ -146,9 +111,8 @@ class TeamSearch extends React.Component {
 
 	
   render() {
-    const {isLoaded, items, futGames, prevGames } = this.state;
-	
-    if (items == null) {
+    const {isLoaded, items, prevGames } = this.state;
+      if (items == null) {
       return <div className="container">No Results returned. Please try searching again.<br/><br/><form onSubmit={this.handleSubmit}>
         <label> 
           Pick your team to learn more: 
@@ -223,58 +187,8 @@ class TeamSearch extends React.Component {
 			</div>
           ))}
 		  
-		  {(() => {
-					if (futGames == null) {
-					  return (
-						 <div>&nbsp;</div>
-					  )
-					 
-					}else{
-					  return (
-						 <div> 
-							<h1>
-								SCHEDULE (next 5)
-							</h1>
-							<div className="row">
-								<div className="col-md-2">
-									<b>Date</b>
-								</div>
-								<div className="col-md-2">
-									<b>Time</b>
-								</div>
-								<div className="col-md-2">
-									<b>Home Team</b>
-								</div>
-								<div className="col-md-2">
-									<b>Away Team</b>
-								</div>
-							</div>
-							{futGames.map(futGame => (
-								<div key={futGame.dateEventLocal}>
-									<div className="row">
-										<div className="col-md-2">
-											{futGame.dateEventLocal}
-										</div>
-										<div className="col-md-2">
-											{futGame.strTimeLocal}
-										</div>
-										<div className="col-md-2">
-											{futGame.strHomeTeam}
-										</div>
-										<div className="col-md-2">
-											{futGame.strAwayTeam}
-										</div>
-										 
-									</div>
-								</div>
-							))}
-						</div>
-					  )		
-					}
-				})()}
-				
 				{(() => {
-					if (prevGames == null) {
+					if (prevGames === undefined) {
 					  return (
 						 <div>&nbsp;</div>
 					  )
@@ -296,10 +210,10 @@ class TeamSearch extends React.Component {
 								</div>
 							</div>
 							{prevGames.map(prevGame => (
-								<div key={prevGame.dateEventLocal}>
+								<div key={prevGame.idEvent}>
 									<div className="row">
 										<div className="col-md-2">
-											{prevGame.dateEventLocal}
+											{prevGame.dateEvent}
 										</div>
 										<div className="col-md-3">
 											{prevGame.strHomeTeam} (  {prevGame.intHomeScore} )
