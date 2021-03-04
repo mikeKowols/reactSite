@@ -7,22 +7,30 @@ class Home extends React.Component {
 	
   render() {
       return (
-		
-		<div className="home">
-			<div className="container">
-				<div className="row align-items-center my-5">
-					<div className="col-lg-7">
-						<img className="responsiveImage" src={lagoon} alt={lagoon} />
-					</div>
-					<div className="col-lg-5">
-						<p>
-							I had wanted to dive into React for awhile and decided that the best way to do it would be to come up with a project. I had built a portfolio site a few years back using mostly jQuery and decided that it made sense to try to rebuild it in React. Beyond showing screenshots of past projects, I'll be using this to try to do different things using React.<br/><br/>
-							I am a 37-year old web developer who currently resides in the Northwest Suburbs of Chicago. Over the years I've had the good fortune of working in a number of different industries and meet some incredible people. I've spent over 10 years as a Front End Web Developer. I'm proficient with html, css, javascript and jQuery. I've also worked with a number of different databases including: Microsoft SQL Server, Oracle, Ingres, and MySQL. Over the past 5 years I've worked on a number of ecommerce related projects using ecommerce platforms such as: Magento, WooCommerce, Shopify, and XCart. When I'm not working, I enjoy running. I've ran 2 marathons and 6 half marathons. I've also been running the Edison Park Turkey Trot for 16 years. I also enjoy watching sports and spending time with my family.
-						</p>
-					</div>
-				</div>
-				 
-        </div></div>
+	  <div className="home">
+	    <div className="container">
+	      <div className="row align-items-center my-5">
+		<div className="col-lg-7">
+		  <img className="responsiveImage" src={lagoon} alt={lagoon} />
+		</div>
+		<div className="col-lg-5">
+		  <p>
+		    Hi. I’m Mike, front end web developer, husband, father, runner, and sports enthusiast. Over the course of training for 2 marathons, 6 half marathons and 16 Annual Edison Park Turkey Trots,
+		    I’ve not only stretched myself physically, but expanded my web developing skill base. My proficiency in HTML, CSS, JavaScript and jQuery began with a Computer Programming degree
+		    from Western Illinois University and continued to grow throughout the years with each company’s specific database. While partnering with a variety of industries I’ve worked with databases
+		    such as Oracle, Microsoft SQL, Server, Ingres and MySQL.
+		    <br/><br/>
+		    5 years of ecommerce related projects enhanced my skills in platforms such as Magento, WooCommerce, Shopify, and X-Cart. While in those roles I also got the opportunity to expand more into full stack
+		    develpment as I was responsible for setting up multiple WordPress sites begin to end. This included setting up linux boxes on AWS and Azure. I was also responsible for setting up Apache and MySQL.
+		    I would then collaborate with design and marketing teams to ensure that the functionality as well as the look and feel matched the company vision for the site.  
+		    <br/><br/>  
+		    Most recently, I stretched my skills by updating this portfolio using React. I really enjoyed the processs of rebuilding the site and learning React, because it got me back to one of my favorite
+		    aspects of what I do for a living. I love getting the opportunity to dig into to new technologies and learn new skills.  
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
       );
 	 
      
