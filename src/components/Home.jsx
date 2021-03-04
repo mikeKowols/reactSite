@@ -15,7 +15,7 @@ class Home extends React.Component {
 		</div>
 		<div className="col-lg-5">
 		  <p>
-		    Hi. I’m Mike, front end web developer, husband, father, runner, and sports enthusiast. Over the course of training for 2 marathons, 6 half marathons and 16 Annual Edison Park Turkey Trots,
+		    Hi. I’m Mike Kowols, front end web developer, husband, father, runner, and sports enthusiast. Over the course of training for 2 marathons, 6 half marathons and 16 Annual Edison Park Turkey Trots,
 		    I’ve not only stretched myself physically, but expanded my web developing skill base. My proficiency in HTML, CSS, JavaScript and jQuery began with a Computer Programming degree
 		    from Western Illinois University and continued to grow throughout the years with each company’s specific database. While partnering with a variety of industries I’ve worked with databases
 		    such as Oracle, Microsoft SQL, Server, Ingres and MySQL.
