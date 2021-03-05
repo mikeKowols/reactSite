@@ -6,7 +6,7 @@ function Footer() {
       <footer className="bg-dark fixed-bottom">
         <div className="container">
           <p className="m-0 text-center text-white">
-            Copyright &copy; Mike Kowols 2020
+            Copyright &copy; Mike Kowols 2021
           </p>
         </div>
       </footer>
